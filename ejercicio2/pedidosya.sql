@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2024 a las 00:05:09
+-- Tiempo de generación: 25-09-2024 a las 00:17:44
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -98,7 +98,8 @@ ALTER TABLE `detallespedidos`
 --
 ALTER TABLE `pedidos`
   ADD PRIMARY KEY (`idPedidos`),
-  ADD UNIQUE KEY `idPedidos` (`idPedidos`,`idCliente`);
+  ADD UNIQUE KEY `idPedidos` (`idPedidos`,`idCliente`),
+  ADD KEY `idCliente` (`idCliente`);
 
 --
 -- Indices de la tabla `producto`
@@ -122,6 +123,23 @@ ALTER TABLE `clietes`
 --
 ALTER TABLE `producto`
   MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `detallespedidos`
+--
+ALTER TABLE `detallespedidos`
+  ADD CONSTRAINT `detallespedidos_ibfk_1` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`);
+
+--
+-- Filtros para la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`idPedidos`) REFERENCES `detallespedidos` (`idPedido`),
+  ADD CONSTRAINT `pedidos_ibfk_2` FOREIGN KEY (`idCliente`) REFERENCES `clietes` (`idCliente`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
