@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-09-2024 a las 00:56:32
+-- Tiempo de generación: 24-09-2024 a las 16:40:57
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -104,7 +104,8 @@ ALTER TABLE `cliente`
 -- Indices de la tabla `mascota`
 --
 ALTER TABLE `mascota`
-  ADD PRIMARY KEY (`idMascota`);
+  ADD PRIMARY KEY (`idMascota`),
+  ADD KEY `idCliente` (`idCliente`);
 
 --
 -- Indices de la tabla `tratamiento`
@@ -116,7 +117,9 @@ ALTER TABLE `tratamiento`
 -- Indices de la tabla `visita`
 --
 ALTER TABLE `visita`
-  ADD PRIMARY KEY (`idVisita`);
+  ADD PRIMARY KEY (`idVisita`),
+  ADD KEY `idMascota` (`idMascota`),
+  ADD KEY `idTratamiento` (`idTratamiento`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -145,6 +148,24 @@ ALTER TABLE `tratamiento`
 --
 ALTER TABLE `visita`
   MODIFY `idVisita` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `mascota`
+--
+ALTER TABLE `mascota`
+  ADD CONSTRAINT `mascota_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`);
+
+--
+-- Filtros para la tabla `visita`
+--
+ALTER TABLE `visita`
+  ADD CONSTRAINT `visita_ibfk_1` FOREIGN KEY (`idMascota`) REFERENCES `mascota` (`idMascota`),
+  ADD CONSTRAINT `visita_ibfk_2` FOREIGN KEY (`idMascota`) REFERENCES `mascota` (`idMascota`),
+  ADD CONSTRAINT `visita_ibfk_3` FOREIGN KEY (`idTratamiento`) REFERENCES `tratamiento` (`idTratamiento`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
