@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-09-2024 a las 16:40:57
+-- Tiempo de generación: 24-09-2024 a las 17:35:12
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,6 +39,27 @@ CREATE TABLE `cliente` (
   `contactoAlternativo` bigint(20) NOT NULL,
   `activo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`idCliente`, `dni`, `nombre`, `apellido`, `telefono`, `direccion`, `contactoAlternativo`, `activo`) VALUES
+(1, 4567890, 'Gabriel', 'Mendoza', 1189012345, 'Calle 321, Tucumán', 1167890123, 1),
+(2, 5678901, 'Lucía', 'Hernández', 1190123456, 'Avenida 678, Salta', 1156789012, 1),
+(3, 6789012, 'Mateo', 'Martín', 1191234567, 'Calle 456, Jujuy', 1198901234, 1),
+(4, 7890123, 'Sofía', 'Díaz', 1192345678, 'Avenida 789, La Rioja', 1184567890, 1),
+(5, 8901234, 'Jorge', 'García', 1193456789, 'Calle 901, Catamarca', 1178901234, 1),
+(6, 9012345, 'Eva', 'Romero', 1194567890, 'Avenida 123, Santiago del Estero', 1159012345, 1),
+(7, 1234567, 'Daniel', 'Navarro', 1195678901, 'Calle 234, Chaco', 1189012345, 1),
+(8, 2345678, 'Isabel', 'Torres', 1196789012, 'Avenida 345, Formosa', 1167890123, 1),
+(9, 3456789, 'Francisco', 'Ruiz', 1197890123, 'Calle 456, Misiones', 1156789012, 1),
+(10, 4111111, 'Ana', 'Rodríguez', 1198901234, 'Avenida 567, Corrientes', 1184567890, 1),
+(11, 5222222, 'Pedro', 'Álvarez', 1199012345, 'Calle 678, Tucumán', 1178901234, 1),
+(12, 6333333, 'Laura', 'Gómez', 1200123456, 'Avenida 789, Salta', 1159012345, 1),
+(13, 7444444, 'Carlos', 'López', 1201234567, 'Calle 901, Jujuy', 1189012345, 1),
+(14, 8555555, 'María', 'Sánchez', 1202345678, 'Avenida 123, La Rioja', 1167890123, 1),
+(15, 9666666, 'Juan', 'Pérez', 1203456789, 'Calle 234, Catamarca', 1156789012, 1);
 
 -- --------------------------------------------------------
 
@@ -129,7 +150,7 @@ ALTER TABLE `visita`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `mascota`
